@@ -18,7 +18,9 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
           </div>
 
           <div className="m-10">
-            <h4 className="text-xl font-bold mb-4">🔑 Choose How It's Used</h4>
+            <h4 className="text-xl font-bold mb-4">
+              🔑 Choose How It&apos;s Used
+            </h4>
             <div className="border-l p-4">
               <b>Open Access</b>
               <p className="text-md mb-4 ml-2">
@@ -58,13 +60,13 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
           <div className="m-10">
             <h4 className="text-xl font-bold mb-4">🫡 Use Art Responsibly</h4>
             <div className="border-l p-4">
-              <b>Clear Terms</b>
+              <b>Adhere to Terms</b>
               <p className="text-md mb-4 ml-2">
                 Every artwork comes with clear specified license terms
               </p>
               <b>Fair Play, Fair Pay</b>
               <p className="text-md mb-4 ml-2">
-                Every purchase is a direct nod of support to the artist
+                Every payment is a direct nod of support to the artist
               </p>
               <b>Arttribute Certificates</b>
               <p className="text-md mb-4 ml-2">
