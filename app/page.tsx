@@ -7,8 +7,9 @@ import { MainNav } from "@/components/main-nav";
 import { HowItWorks } from "@/components/how-it-works";
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Example dashboard app built using the components.",
+  title: "Arttribute",
+  description:
+    "Arttribute enables fair and transaparent use of art in the realm of genereative AI",
 };
 
 export default function DashboardPage() {
@@ -18,20 +19,22 @@ export default function DashboardPage() {
       <div className="flex flex-col md:flex">
         <div className="fixed top-0 left-0 right-0 ">
           <div className="border-b">
-            <div className="flex h-16 items-center px-40">
+            <div className="flex h-16 items-center lg:px-40">
               <Link
                 href="/examples/dashboard"
-                className="text-xl transition-colors hover:text-primary font-bold"
+                className=" ml-2 text-xl transition-colors hover:text-primary font-bold"
               >
                 Arttribute
               </Link>
 
               <div className="ml-auto items-center justify-center">
-                <MainNav className="mx-6" />
+                <MainNav className="hidden lg:flex mx-6" />
               </div>
 
               <div className="ml-auto flex items-center space-x-4">
-                <Button>Start Creating</Button>
+                <div className="hidden lg:flex">
+                  <Button>Start Creating</Button>
+                </div>
               </div>
             </div>
           </div>
@@ -39,36 +42,42 @@ export default function DashboardPage() {
       </div>
       <div className="grid lg:grid-cols-12">
         <div className="lg:col-span-1"></div>
-        <div className="lg:col-span-10 lg:border-l mt-16">
-          <div className="grid grid-cols-12 items-center justify-center  ">
-            <div className="col-span-6 justify-self-center block w-[400px] -mt-4">
-              <h1 className="text-7xl font-bold">The AI Art Protocol</h1>
-              <p className="text-lg m-2">
+        <div className=" lg:col-span-10 border-l mt-16">
+          <div className="grid lg:grid-cols-12 items-center justify-center  ">
+            <div className=" lg:col-span-7 justify-self-end block w-[570px] -mt-4">
+              <h1 className=" text-4xl font-bold lg:text-6xl font-bold m-0">
+                The AI Art Protocol
+              </h1>
+              <p className="text-md lg:text-xl m-2">
                 Arttribute enables fair and transaparent use of art in the realm
                 of genereative AI
               </p>
             </div>
-            <div className="col-span-6 justify-self-center">
+            <div className="hidden lg:block col-span-5 justify-self-center">
               <div className="m-4 ">
                 <Image
                   src={"/arttribute.png"}
                   alt={"hero"}
-                  width={460}
-                  height={460}
-                  className="animate-float m-7 mt-24"
+                  width={400}
+                  height={400}
+                  className="animate-float m-7 mt-24 "
                 />
               </div>
               <div
                 className="absolute top-80 right-80 "
                 style={{
                   boxShadow:
-                    "0 0 120px 20px #f8bbd0, 0 0 280px 160px #fff59d, 0 0 300px 220px #0ff, 0 0 200px 120px #ff4081",
+                    "0 0 120px 20px #f8bbd0, 0 0 260px 140px #fff59d, 0 0 200px 160px #0ff, 0 0 200px 120px #ff4081",
                   zIndex: -1,
                 }}
               ></div>
             </div>
           </div>
+          <div className="m-6"></div>
           <HowItWorks />
+          <div className="items-center justify-center  lg:border-t  border-dashed mt-16 p-10">
+            <h2 className="text-2xl font-bold text-center mt-8"></h2>
+          </div>
         </div>
       </div>
     </>

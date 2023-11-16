@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
   return (
     <div className="items-center justify-center  lg:border-t  border-dashed mt-16 p-10">
-      <h2 className="text-4xl font-bold text-center">How it works</h2>
-      <div className="grid grid-cols-12 mt-10 gap-4">
-        <div className="col-span-6 rounded-md border-2 border-dotted ">
+      <h2 className="text-4xl font-bold text-center mt-6">How it works</h2>
+      <div className="grid lg:grid-cols-12 mt-12 gap-4">
+        <div className="lg:col-span-6 rounded-md border-2 border-dotted ">
           <h3 className="text-2xl font-bold text-center m-6">For Artisits</h3>
           <div className="m-10">
             <h4 className="text-xl font-bold mb-4">🖼️ Upload your Art</h4>
@@ -44,7 +44,7 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
             </Link>
           </div>
         </div>
-        <div className="col-span-6 rounded-md border-2 border-dotted ">
+        <div className="lg:col-span-6 rounded-md border-2 border-dotted ">
           <h3 className="text-2xl font-bold text-center m-6">
             AI Artisans & Collectors
           </h3>

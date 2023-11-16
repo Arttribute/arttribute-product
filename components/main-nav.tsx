@@ -51,17 +51,17 @@ export function MainNav({
           <MenubarContent>
             <MenubarItem>
               {" "}
-              <Link href="/" passHref>
+              <Link href="/studio" passHref>
                 Studio
               </Link>
             </MenubarItem>
-            <MenubarSeparator />
+            {/* <MenubarSeparator />
             <MenubarItem>
               <Link href="/" passHref>
                 {" "}
                 Arttribute Licences
               </Link>
-            </MenubarItem>
+            </MenubarItem> */}
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
@@ -75,7 +75,11 @@ export function MainNav({
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem>
-              <Link href="/" passHref>
+              <Link
+                href="https://docs.arttribute.io/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 {" "}
                 Arttribute API Docs
               </Link>
@@ -88,14 +92,7 @@ export function MainNav({
             <MenubarItem>
               {" "}
               <Link href="/" passHref>
-                Marketplace
-              </Link>
-            </MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem>
-              <Link href="/" passHref>
-                {" "}
-                Arttribute Licences
+                Marketplace Coming soon..
               </Link>
             </MenubarItem>
           </MenubarContent>
