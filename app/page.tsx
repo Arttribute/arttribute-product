@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
 import { MainNav } from "@/components/main-nav";
@@ -17,16 +17,10 @@ export default function DashboardPage() {
     <>
       <div className="md:hidden"></div>
       <div className="flex flex-col md:flex">
-        <div className="fixed top-0 left-0 right-0 ">
+        <div className="fixed top-0 left-0 right-0 z-10 bg-white">
           <div className="border-b">
             <div className="flex h-16 items-center lg:px-40">
-              <Link
-                href="/examples/dashboard"
-                className=" ml-2 text-xl transition-colors hover:text-primary font-bold"
-              >
-                Arttribute
-              </Link>
-
+              <Logo text="Arttribute" />
               <div className="ml-auto items-center justify-center">
                 <MainNav className="hidden lg:flex mx-6" />
               </div>
@@ -42,13 +36,13 @@ export default function DashboardPage() {
       </div>
       <div className="grid lg:grid-cols-12">
         <div className="lg:col-span-1"></div>
-        <div className=" lg:col-span-10 border-l mt-16">
+        <div className="lg:col-span-10 lg:border-l mt-16">
           <div className="grid lg:grid-cols-12 items-center justify-center  ">
             <div className=" lg:col-span-7 justify-self-end block w-[570px] -mt-4">
-              <h1 className=" text-4xl font-bold lg:text-6xl font-bold m-0">
+              <h1 className=" text-center text-5xl font-bold mt-24 lg:text-left lg:text-6xl  lg:mt-0">
                 The AI Art Protocol
               </h1>
-              <p className="text-md lg:text-xl m-2">
+              <p className=" text-center mt-4 text-md lg:text-left text-xl m-2">
                 Arttribute enables fair and transaparent use of art in the realm
                 of genereative AI
               </p>
@@ -60,7 +54,7 @@ export default function DashboardPage() {
                   alt={"hero"}
                   width={400}
                   height={400}
-                  className="animate-float m-7 mt-24 "
+                  className="animate-float m-7 mt-24 z-0"
                 />
               </div>
               <div
