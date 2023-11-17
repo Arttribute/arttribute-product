@@ -55,8 +55,8 @@ export default function StudioPage() {
                 <p className="text-center text-lg  -mt-2 ">
                   We&apos;re delighted you&apos;re interested in joining the
                   exclusive Private Beta. <br /> If you&apos;d like to be a part
-                  of our Private Beta, please click "Join private beta " to fill
-                  out the form
+                  of our Private Beta, please click &quot;Join private
+                  beta&quot; to fill out the form
                   <br />
                   and we&apos;ll get back to you soon!
                 </p>
