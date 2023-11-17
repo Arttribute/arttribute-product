@@ -12,12 +12,14 @@ export const metadata: Metadata = {
     "AI enabled Co-creation | Collaboratively produce unique art for Strorytelling, Games, Fashion, and more, with the help of AI",
 };
 
+import Link from "next/link";
+
 export default function StudioPage() {
   return (
     <>
       <div className="md:hidden"></div>
       <div className="flex flex-col md:flex">
-        <div className="fixed top-0 left-0 right-0 z-10">
+        <div className="fixed top-0 left-0 right-0 z-10 bg-white">
           <div className="border-b">
             <div className="flex h-16 items-center lg:px-40">
               <Logo text="Arttribute Studio" />
@@ -28,7 +30,9 @@ export default function StudioPage() {
 
               <div className="ml-auto flex items-center space-x-4">
                 <div className="hidden lg:flex">
-                  <Button>Start Creating</Button>
+                  <Link href="/private-beta" passHref>
+                    <Button>Start Creating</Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -59,7 +63,9 @@ export default function StudioPage() {
                 Fashion, and more, with the help of AI
               </p>
               <div className="text-center m-2 lg:text-left lg:mt-6 lg:m-0  ">
-                <Button>Start Creating</Button>
+                <Link href="/private-beta" passHref>
+                  <Button>Start Creating</Button>
+                </Link>
               </div>
             </div>
             <div className="hidden lg:block col-span-5 justify-self-start">
@@ -74,8 +80,59 @@ export default function StudioPage() {
               </div>
             </div>
           </div>
-          <div className="items-center justify-center  lg:border-t  border-dashed mt-16 p-10">
-            <h2 className="text-2xl font-bold text-center mt-8"></h2>
+          <div className="items-center justify-center  lg:border-t lg:border-r  border-dashed mt-16 p-10">
+            <h2 className="text-4xl font-bold text-center mt-6">
+              Simple, Collaborative, Transformative
+            </h2>
+            <div className="grid lg:grid-cols-12 mt-12 gap-4">
+              <div className="lg:col-span-4 rounded-md  border-2 border-dotted">
+                <h3 className="text-center text-2xl font-bold  m-8 mb-2">
+                  Artists Inspire AI
+                </h3>
+
+                <div className="m-8 mt-4">
+                  <p className="text-center text-md mb-2">
+                    Fuel AI models with your unique art. It&apos;s like teaching
+                    it your creative language!
+                  </p>
+                  <p className="text-center text-md mb-2">
+                    Upload your art collections to train custom shareable AI
+                    models that mirror your style
+                  </p>
+                </div>
+              </div>
+              <div className="lg:col-span-4 rounded-md border-2 border-dotted ">
+                <h3 className="text-center text-2xl font-bold  m-8 mb-2">
+                  Choose your Inspiration
+                </h3>
+
+                <div className="m-8 mt-4">
+                  <p className="text-center text-md mb-2">
+                    Explore a world of AI-models infused with styles from your
+                    favorite artists
+                  </p>
+                  <p className="text-center text-md mb-2">
+                    Pick the one that sparks your imagination!
+                  </p>
+                </div>
+              </div>
+              <div className="lg:col-span-4 rounded-md border-2 border-dotted ">
+                <h3 className="text-center text-2xl font-bold  m-8 mb-2">
+                  Collaborative Creation
+                </h3>
+
+                <div className="m-8 mt-4">
+                  <p className="text-center text-md mb-2">
+                    Together, merge ideas into stunning artwork that tells new
+                    stories.
+                  </p>
+                  <p className="text-center text-md mb-2">
+                    Use AI models fine tuned by artists to bring your artistic
+                    vision to life.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

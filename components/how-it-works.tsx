@@ -39,7 +39,7 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
                 Approve who uses your art, and how. And get paid for it
               </p>
             </div>
-            <Link href="/" passHref>
+            <Link href="/private-beta" passHref>
               <Button className="mt-10">Get Started</Button>
             </Link>
           </div>
@@ -77,7 +77,7 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
                 From AI models to personal galleries, blend art with honor
               </p>
             </div>
-            <Link href="/" passHref>
+            <Link href="/private-beta" passHref>
               <Button className="mt-10">Get Started</Button>
             </Link>
           </div>

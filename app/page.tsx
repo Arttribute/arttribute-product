@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { MainNav } from "@/components/main-nav";
 import { HowItWorks } from "@/components/how-it-works";
 
+import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Arttribute",
   description:
@@ -27,7 +29,9 @@ export default function DashboardPage() {
 
               <div className="ml-auto flex items-center space-x-4">
                 <div className="hidden lg:flex">
-                  <Button>Start Creating</Button>
+                  <Link href="/private-beta" passHref>
+                    <Button>Get Started</Button>
+                  </Link>
                 </div>
               </div>
             </div>
