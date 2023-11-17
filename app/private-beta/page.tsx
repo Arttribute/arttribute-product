@@ -53,11 +53,12 @@ export default function StudioPage() {
 
               <div className="m-4 , p-8 ">
                 <p className="text-center text-lg  -mt-2 ">
-                  We're delighted you're interested in joining the exclusive
-                  Private Beta. <br /> If you'd like to be a part of our Private
-                  Beta, please click "Join private beta " to fill out the form
+                  We&apos;re delighted you&apos;re interested in joining the
+                  exclusive Private Beta. <br /> If you&apos;d like to be a part
+                  of our Private Beta, please click "Join private beta " to fill
+                  out the form
                   <br />
-                  and we'll get back to you soon!
+                  and we&apos;ll get back to you soon!
                 </p>
               </div>
             </div>
