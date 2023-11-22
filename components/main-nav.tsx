@@ -68,20 +68,20 @@ export function MainNav({
           <MenubarTrigger className="text-sm ">Builders</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
-              {" "}
-              <Link href="/" passHref>
-                Build with Arttribute
-              </Link>
-            </MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem>
               <Link
                 href="https://docs.arttribute.io/"
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 {" "}
-                Arttribute API Docs
+                Arttribute API
+              </Link>
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>
+              {" "}
+              <Link href="/" passHref>
+                Build with Arttribute
               </Link>
             </MenubarItem>
           </MenubarContent>
