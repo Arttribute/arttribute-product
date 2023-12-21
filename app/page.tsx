@@ -48,7 +48,7 @@ export default function DashboardPage() {
               </h1>
               <p className=" text-center mt-4 text-md lg:text-left text-xl m-2">
                 Arttribute enables fair and transaparent use of art in the realm
-                of genereative AI
+                of generative AI
               </p>
             </div>
             <div className="hidden lg:block col-span-5 justify-self-center">
