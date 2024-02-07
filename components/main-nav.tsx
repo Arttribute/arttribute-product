@@ -64,7 +64,7 @@ export function MainNav({
             </MenubarItem> */}
           </MenubarContent>
         </MenubarMenu>
-        <MenubarMenu>
+        {/*<MenubarMenu>
           <MenubarTrigger className="text-sm ">Builders</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
@@ -86,6 +86,7 @@ export function MainNav({
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
+          */}
         <MenubarMenu>
           <MenubarTrigger className="text-sm ">NFTs</MenubarTrigger>
           <MenubarContent>
