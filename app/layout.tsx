@@ -13,7 +13,7 @@ const chakra_petch = Chakra_Petch({
 export const metadata: Metadata = {
   title: "Arttribute",
   description:
-    "Arttribute enables fair and transaparent use of art in the realm of genereative AI",
+    "Arttribute enables fair and transparent use of art in the realm of genereative AI",
 };
 
 export default function RootLayout({
