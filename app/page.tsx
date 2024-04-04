@@ -47,7 +47,7 @@ export default function DashboardPage() {
                 The AI Art Protocol
               </h1>
               <p className=" text-center mt-4 text-md lg:text-left text-xl m-2">
-                Arttribute enables fair and transaparent use of art in the realm
+                Arttribute enables fair and transparent use of art in the realm
                 of generative AI
               </p>
             </div>
