@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
-import { MainNav } from "@/components/main-nav";
 import { HowItWorks } from "@/components/how-it-works";
 
 export const metadata: Metadata = {
@@ -23,10 +22,6 @@ export default function StudioPage() {
           <div className="border-b">
             <div className="flex h-16 items-center lg:px-40">
               <Logo text="Arttribute Studio" />
-
-              <div className="ml-auto items-center justify-center">
-                <MainNav className="hidden lg:flex mx-6" />
-              </div>
 
               <div className="ml-auto flex items-center space-x-4">
                 <div className="hidden lg:flex">

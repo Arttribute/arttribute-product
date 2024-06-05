@@ -3,22 +3,14 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   Menubar,
-  MenubarCheckboxItem,
   MenubarContent,
   MenubarItem,
-  MenubarLabel,
   MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
   MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
-export function MainNav({
+export default function MainMenu({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {

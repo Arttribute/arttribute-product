@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-import { MainNav } from "@/components/main-nav";
+import { MainNav } from "@/components/main-menu";
 import { HowItWorks } from "@/components/how-it-works";
 
 export const metadata: Metadata = {
