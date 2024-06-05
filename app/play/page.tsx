@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
-import { MainNav } from "@/components/main-menu";
 import { HowItWorks } from "@/components/how-it-works";
 
 import Link from "next/link";
