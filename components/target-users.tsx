@@ -18,8 +18,8 @@ export default function TargetUsers() {
               </h4>
               <div className="border-l p-2">
                 <p className="text-sm mb-4 ml-2 text-gray-600">
-                  Upload your artwork and set your terms. Each of your artwork
-                  is uniquely marked to track its usage and ensure you get the
+                  Upload your artwork and set your terms. Each artwork is
+                  uniquely marked to track its usage and ensure you get the
                   credit you deserve.
                 </p>
               </div>
