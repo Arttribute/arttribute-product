@@ -1,87 +1,70 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ArrowDown, Circle, Dot } from "lucide-react";
 
 export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
   return (
-    <div className="items-center justify-center  lg:border-t  border-dashed mt-16 p-10">
-      <h2 className="text-4xl font-bold text-center mt-6">How it works</h2>
-      <div className="grid lg:grid-cols-12 mt-12 gap-4">
-        <div className="lg:col-span-6 rounded-md border-2 border-dotted ">
-          <h3 className="text-2xl font-bold text-center m-6">For Artisits</h3>
-          <div className="m-10">
-            <h4 className="text-xl font-bold mb-4">🖼️ Upload your Art</h4>
-            <p className="text-md mb-2">
-              Your canvas, your rules. Upload your artwork, set your own terms,
-              and if you like, a price tag too.
-            </p>
+    <div className="grid grid-cols-12 -ml-2">
+      <div className="flex col-span-1 my-6">
+        <div className="relative flex flex-col items-center w-8 h-full">
+          <div className="absolute w-0.5 h-full bg-gradient-to-b from-violet-600  to-pink-500 rounded-full"></div>
+          <div className="absolute top-0  w-4 h-10 bg-white rounded-full flex items-center justify-center">
+            <ArrowDown size={24} className="text-violet-600" />
           </div>
+          <div className="absolute top-1/4  w-4 h-6 bg-white rounded-full flex items-center justify-center">
+            <ArrowDown size={24} className="text-violet-600" />
+          </div>
+          <div className="absolute top-1/2  w-4 h-6 bg-white rounded-full flex items-center justify-center">
+            <ArrowDown size={24} className="text-purple-500" />
+          </div>
+          <div className="absolute top-3/4  w-4 h-6 bg-white rounded-full flex items-center justify-center">
+            <ArrowDown size={24} className="text-pink-500" />
+          </div>
+          <div className="absolute bottom-0 w-4 h-6 bg-white rounded-full flex items-center justify-center">
+            <Dot size={24} className="text-pink-600" />
+          </div>
+        </div>
+      </div>
 
-          <div className="m-10">
-            <h4 className="text-xl font-bold mb-4">
-              🔑 Choose How It&apos;s Used
-            </h4>
-            <div className="border-l p-4">
-              <b>Open Access</b>
-              <p className="text-md mb-4 ml-2">
-                Opt for open sharing and let your art inspire freely
-              </p>
-              <b>Permission-Based</b>
-              <p className="text-md mb-4 ml-2">
-                Want a say in who uses your art? You got it
-              </p>
-              <b>Monetize Your Art</b>
-              <p className="text-md mb-4 ml-2">
-                Set a price, and watch your art generate revenue
-              </p>
-              <b>Exclusive Access</b>
-              <p className="text-md mb-4 ml-2">
-                Approve who uses your art, and how. And get paid for it
-              </p>
-            </div>
-            <Link href="/private-beta" passHref>
-              <Button className="mt-10">Get Started</Button>
-            </Link>
-          </div>
-        </div>
-        <div className="lg:col-span-6 rounded-md border-2 border-dotted ">
-          <h3 className="text-2xl font-bold text-center m-6">
-            AI Artisans & Collectors
-          </h3>
-          <div className="m-10">
-            <h4 className="text-xl font-bold mb-4">
-              🎨 Access a Diverse Art Library
-            </h4>
-            <p className="text-md mb-2">
-              Explore an extensive collection of artworks. Each piece is a
-              potential spark for your AI models{" "}
-            </p>
-          </div>
-          <div className="m-10">
-            <h4 className="text-xl font-bold mb-4">🫡 Use Art Responsibly</h4>
-            <div className="border-l p-4">
-              <b>Adhere to Terms</b>
-              <p className="text-md mb-4 ml-2">
-                Every artwork comes with clear specified license terms
-              </p>
-              <b>Fair Play, Fair Pay</b>
-              <p className="text-md mb-4 ml-2">
-                Every payment is a direct nod of support to the artist
-              </p>
-              <b>Arttribute Certificates</b>
-              <p className="text-md mb-4 ml-2">
-                With each selection, you get a proof of proper attribution
-              </p>
-              <b>Seamless, Respectful Art Fusion</b>
-              <p className="text-md mb-4 ml-2">
-                From AI models to personal galleries, blend art with honor
-              </p>
-            </div>
-            <Link href="/private-beta" passHref>
-              <Button className="mt-10">Get Started</Button>
-            </Link>
-          </div>
-        </div>
+      <div className="col-span-11">
+        <Card className="col-span-1 mt-4 mb-5 mr-4  rounded-2xl bg-gradient-to-r from-indigo-50 via-purple-50 to-amber-0">
+          <CardHeader>
+            <h2 className="text-base font-medium ">
+              🎨 Artists upload artwork with terms
+            </h2>
+          </CardHeader>
+        </Card>
+        <Card className="col-span-1 mt-4 mb-5 mr-4 rounded-2xl bg-gradient-to-r from-white via-purple-50 to-pink-50 ">
+          <CardHeader>
+            <h2 className="text-base font-medium ">
+              🙏 User Requests to use artwork
+            </h2>
+          </CardHeader>
+        </Card>
+
+        <Card className="col-span-1 mt-4 mb-5 mr-4 rounded-2xl bg-gradient-to-r from-white via-purple-50 to-pink-50 ">
+          <CardHeader>
+            <h2 className="text-base font-medium ">
+              🤝 User makes an attribution & supports artist
+            </h2>
+          </CardHeader>
+        </Card>
+
+        <Card className="col-span-1 mt-4 mb-5 mr-4  rounded-2xl bg-gradient-to-r from-blue-50 via-pink-50 to-white">
+          <CardHeader>
+            <h2 className="text-base font-medium ">
+              🔎 Arttribute checks for a valid attribution
+            </h2>
+          </CardHeader>
+        </Card>
+        <Card className="col-span-1 mt-4 mb-5 mr-4 rounded-2xl bg-gradient-to-r from-white via-indigo-50 to-pink-50">
+          <CardHeader>
+            <h2 className="text-base font-medium ">
+              ✅ Approve or deny the request to use the artwork
+            </h2>
+          </CardHeader>
+        </Card>
       </div>
     </div>
   );

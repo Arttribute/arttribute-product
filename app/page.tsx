@@ -3,10 +3,15 @@ import Image from "next/image";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
-import { MainNav } from "@/components/main-nav";
 import { HowItWorks } from "@/components/how-it-works";
 
 import Link from "next/link";
+import Banner from "@/components/banner";
+import Navbar from "@/components/navbar";
+import TargetUsers from "@/components/target-users";
+import Footer from "@/components/footer";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Arttribute",
@@ -14,70 +19,80 @@ export const metadata: Metadata = {
     "Arttribute enables fair and transaparent use of art in the realm of genereative AI",
 };
 
-export default function DashboardPage() {
+export default function HomePage() {
   return (
     <>
-      <div className="md:hidden"></div>
-      <div className="flex flex-col md:flex">
-        <div className="fixed top-0 left-0 right-0 z-10 bg-white">
-          <div className="border-b">
-            <div className="flex h-16 items-center lg:px-40">
-              <Logo text="Arttribute" />
-              <div className="ml-auto items-center justify-center">
-                <MainNav className="hidden lg:flex mx-6" />
-              </div>
+      <Navbar />
+      <Banner />
 
-              <div className="ml-auto flex items-center space-x-4">
-                <div className="hidden lg:flex">
-                  <Link href="/private-beta" passHref>
-                    <Button>Get Started</Button>
-                  </Link>
+      <div className="p-16">
+        <TargetUsers />
+
+        <div className="items-center justify-center  lg:border-t  border-dashed mt-12 p-4"></div>
+        <div className="flex justify-center p-6">
+          <h3 className="text-3xl font-semibold">How it works</h3>
+        </div>
+
+        <div className="grid grid-cols-12 lg:p-6">
+          <div className="col-span-12 lg:col-span-6 lg:pr-6">
+            <Card className="lg:m-4 shadow-md p-4  mb-4">
+              <CardContent className="p-7">
+                <h2 className="text-2xl font-bold ">
+                  {" "}
+                  Automatic Attributions{" "}
+                </h2>
+                <p className="text-base text-gray-600">
+                  Arttribute is centerd around attributions, ensuring that
+                  artists get proper credit when their work is used in AI by
+                  automatically appending attribution details to AI-generated
+                  content.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="lg:m-4 shadow-md border-purple-300 lg:p-4 rounded-xl">
+              <CardContent className="p-4">
+                <div className="lg:flex items-center justify-center">
+                  <Image
+                    src={
+                      "/licenses/png/arrtibute-exlusive-noncommercial-license.png"
+                    }
+                    width={120}
+                    height={100}
+                    alt="Arttribute Licensing"
+                    className="m-2 p-2"
+                  />
+                  <div className="m-2 p-2">
+                    <h2 className="text-xl font-bold ">
+                      Simple Code enforced licenses
+                    </h2>
+                    <p className="text-base text-gray-500">
+                      Inspired by Creative Commons, Arttribute provides simple
+                      code-enforceable licenses for granting AI usage
+                      permissions for your work.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>
+                <Link href="/private-beta" passHref>
+                  <Button variant="outline" className="m-2 mb-0 ">
+                    <p className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                      Learn more
+                    </p>
+                    <ChevronRight className="h-4 w-4 text-purple-500" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="col-span-12 lg:col-span-6 ">
+            <HowItWorks />
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-12">
-        <div className="lg:col-span-1"></div>
-        <div className="lg:col-span-10 lg:border-l mt-16">
-          <div className="grid lg:grid-cols-12 items-center justify-center  ">
-            <div className=" lg:col-span-7 justify-self-end block w-[570px] -mt-4">
-              <h1 className=" text-center text-5xl font-bold mt-24 lg:text-left lg:text-6xl  lg:mt-0">
-                The AI Art Protocol
-              </h1>
-              <p className=" text-center mt-4 text-md lg:text-left text-xl m-2">
-                Arttribute enables fair and transparent use of art in the realm
-                of generative AI
-              </p>
-            </div>
-            <div className="hidden lg:block col-span-5 justify-self-center">
-              <div className="m-4 ">
-                <Image
-                  src={"/arttribute.png"}
-                  alt={"hero"}
-                  width={400}
-                  height={400}
-                  className="animate-float m-7 mt-24 z-0"
-                />
-              </div>
-              <div
-                className="absolute top-80 right-80 "
-                style={{
-                  boxShadow:
-                    "0 0 120px 20px #f8bbd0, 0 0 260px 140px #fff59d, 0 0 200px 160px #0ff, 0 0 200px 120px #ff4081",
-                  zIndex: -1,
-                }}
-              ></div>
-            </div>
-          </div>
-          <div className="m-6"></div>
-          <HowItWorks />
-          <div className="items-center justify-center  lg:border-t  border-dashed mt-16 p-10">
-            <h2 className="text-2xl font-bold text-center mt-8"></h2>
-          </div>
-        </div>
-      </div>
+      <br />
+      <br />
+
+      <Footer />
     </>
   );
 }

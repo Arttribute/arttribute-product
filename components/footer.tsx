@@ -1,9 +1,11 @@
 import Link from "next/link";
 
-export function Footer({}: React.HTMLAttributes<HTMLElement>) {
+import { Logo } from "./logo";
+
+export default function Footer() {
   return (
-    <div className="items-center justify-center  lg:border-t  border-dashed mt-16 p-10">
-      Footer
+    <div className="border-t p-8">
+      <Logo variant="black" text="Arttribute" />
     </div>
   );
 }
