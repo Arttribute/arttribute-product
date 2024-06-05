@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-import { MainNav } from "@/components/main-menu";
 import { HowItWorks } from "@/components/how-it-works";
 
 export const metadata: Metadata = {
@@ -25,10 +24,6 @@ export default function AboutPage() {
               >
                 Arttribute
               </Link>
-
-              <div className="ml-auto items-center justify-center">
-                <MainNav className="mx-6" />
-              </div>
 
               <div className="ml-auto flex items-center space-x-4">
                 <Button>Start Creating</Button>
