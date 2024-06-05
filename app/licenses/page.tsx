@@ -18,10 +18,7 @@ export default function HomePage() {
       <Logo text="Arttribute" />
       <h1 className="text-4xl  font-bold">Licensing</h1>
 
-      <h2 className="text-2xl font-bold mt-8">
-        Arttribute Open License
-        <NonCommercial width={50} height={50} />
-      </h2>
+      <h2 className="text-2xl font-bold mt-8">Arttribute Open License</h2>
       <p className="text-lg">
         This license permits the use of art in AI-driven creative processes
         where the resultant output can be distributed or modified as long as an
