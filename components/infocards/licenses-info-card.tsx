@@ -7,15 +7,15 @@ import { ChevronRight } from "lucide-react";
 export default function LicensesInfoCard() {
   return (
     <>
-      <Card className="lg:m-4 shadow-md border-purple-300 lg:p-4 rounded-xl">
+      <Card className="lg:m-4 shadow-md border-purple-300 lg:p-4 rounded-xl shadow-md hover:shadow-xl">
         <CardContent className="p-4">
           <div className="lg:flex items-center justify-center">
             <Image
-              src={"/licenses/png/arrtibute-exlusive-noncommercial-license.png"}
-              width={110}
+              src={"/licenses/png/arttribute-license-color.png"}
+              width={120}
               height={90}
               alt="Arttribute Licensing"
-              className="m-2 p-2"
+              className="m-2 p-2 "
             />
             <div className="m-2 p-2">
               <h2 className="text-xl font-bold ">
@@ -28,7 +28,7 @@ export default function LicensesInfoCard() {
               </p>
             </div>
           </div>
-          <Link href="/" passHref>
+          <Link href="/licenses" passHref>
             <Button variant="outline" className="m-2 mb-0 ">
               <p className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
                 Learn more
