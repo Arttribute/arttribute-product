@@ -35,7 +35,7 @@ const ArrowStep = ({
   <div
     className={`absolute ${position} w-4 h-6 bg-white rounded-full flex items-center justify-center`}
   >
-    <ArrowDown size={24} className={`text-${color}`} />
+    <ArrowDown size={24} className={`${color}`} />
   </div>
 );
 
@@ -45,10 +45,10 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
       <div className="flex col-span-1 my-6">
         <div className="relative flex flex-col items-center w-8 h-full">
           <div className="absolute w-0.5 h-full bg-gradient-to-b from-violet-600 to-pink-500 rounded-full"></div>
-          <ArrowStep position="top-0" color="violet-600" />
-          <ArrowStep position="top-1/4" color="violet-600" />
-          <ArrowStep position="top-1/2" color="purple-500" />
-          <ArrowStep position="top-3/4" color="pink-500" />
+          <ArrowStep position="top-0" color="text-violet-600" />
+          <ArrowStep position="top-1/4" color="text-purple-600" />
+          <ArrowStep position="top-1/2" color="text-purple-500" />
+          <ArrowStep position="top-3/4" color="text-pink-500" />
           <div className="absolute bottom-0 w-4 h-6 bg-white rounded-full flex items-center justify-center">
             <Dot size={24} className="text-pink-600" />
           </div>
@@ -58,7 +58,7 @@ export function HowItWorks({}: React.HTMLAttributes<HTMLElement>) {
         {steps.map((step, index) => (
           <Card
             key={index}
-            className={`col-span-1 mt-4 mb-5 mr-4 rounded-2xl bg-gradient-to-r ${step.gradient}`}
+            className={`col-span-1 mt-4 mb-5 mr-4 rounded-2xl bg-gradient-to-r ${step.gradient} shadow-md`}
           >
             <CardHeader>
               <h2 className="text-base font-medium">{step.text}</h2>

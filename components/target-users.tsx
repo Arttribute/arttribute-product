@@ -7,7 +7,7 @@ export default function TargetUsers() {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        <Card className="col-span-1 m-2 p-1">
+        <Card className="col-span-1 m-2 p-1 shadow-md hover:shadow-xl ">
           <CardHeader>
             <h2 className="text-2xl font-semibold ">👩🏽‍🎨 For Artists</h2>
           </CardHeader>
@@ -27,14 +27,14 @@ export default function TargetUsers() {
             <Link href="/private-beta" passHref>
               <Button variant="outline" className="mt-4">
                 <p className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
-                  Protect your Art
+                  Get in Control
                 </p>
               </Button>
             </Link>
           </CardContent>
         </Card>
 
-        <Card className="col-span-1 m-2">
+        <Card className="col-span-1 m-2 shadow-md hover:shadow-xl">
           <CardHeader>
             <h2 className="text-2xl font-semibold ">👨🏾‍💻 For Builders</h2>
           </CardHeader>
@@ -61,7 +61,7 @@ export default function TargetUsers() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-1 m-2">
+        <Card className="col-span-1 m-2 shadow-md hover:shadow-xl">
           <CardHeader>
             <h2 className="text-2xl font-semibold">🙋🏽 For AI Art lovers</h2>
           </CardHeader>

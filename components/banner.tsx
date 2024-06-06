@@ -10,7 +10,7 @@ export default function Banner() {
         <div className="lg:col-span-1"></div>
         <div className="lg:col-span-10 lg:border-l ">
           <div>
-            <div className="absolute left-70 right-0 top-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-gradient-to-r from-amber-500 to-purple-500 opacity-20 blur-[50px]"></div>
+            <div className="absolute left-75 right-0 top-40 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-gradient-to-r from-amber-500 via-lime-500 to-purple-500 opacity-20 blur-[50px]"></div>
 
             <div className="rounded-lg">
               <div className="flex item-center">
@@ -29,9 +29,9 @@ export default function Banner() {
                   </div>
                   <div className="flex mt-4 ">
                     <Button className="m-1 font-medium p-6 rounded-lg px-12">
-                      Protect your art
+                      Share & Control your Art{" "}
                     </Button>
-                    <Link href="/">
+                    <Link href="https://studio.arttribute.io/" target="_blank">
                       <Button
                         variant="outline"
                         className="hidden lg:flex m-1 font-medium p-6 rounded-lg opacity-90"

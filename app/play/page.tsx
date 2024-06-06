@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Logo } from "@/components/logo";
-import { Button } from "@/components/ui/button";
-
-import { HowItWorks } from "@/components/how-it-works";
+import Navbar from "@/components/navbar";
 
 import Link from "next/link";
 
@@ -16,7 +14,8 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <Logo text="Arttribute" />
+      <Navbar />
+
       <h1 className="text-4xl  font-bold">Play</h1>
     </>
   );
