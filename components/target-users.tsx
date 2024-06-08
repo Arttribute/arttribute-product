@@ -24,7 +24,10 @@ export default function TargetUsers() {
                 </p>
               </div>
             </div>
-            <Link href="/private-beta" passHref>
+            <Link
+              href="https://artifacts.arttribute.io/artifacts/create"
+              passHref
+            >
               <Button variant="outline" className="mt-4">
                 <p className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
                   Get in Control
@@ -51,7 +54,7 @@ export default function TargetUsers() {
                 </p>
               </div>
             </div>
-            <Link href="/private-beta" passHref>
+            <Link href="https://docs.arttribute.io/" passHref>
               <Button variant="outline" className="mt-4">
                 <p className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
                   Build with Arttribute
@@ -78,7 +81,7 @@ export default function TargetUsers() {
                 </p>
               </div>
             </div>
-            <Link href="/private-beta" passHref>
+            <Link href="https://studio.arttribute.io/" passHref>
               <Button variant="outline" className="mt-4">
                 <p className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
                   Discover and use Art
