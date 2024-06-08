@@ -28,9 +28,14 @@ export default function Banner() {
                     </p>
                   </div>
                   <div className="flex mt-4 ">
-                    <Button className="m-1 font-medium p-6 rounded-lg px-12">
-                      Share & Control your Art{" "}
-                    </Button>
+                    <Link
+                      href="https://artifacts.arttribute.io/artifacts/create"
+                      target="_blank"
+                    >
+                      <Button className="m-1 font-medium p-6 rounded-lg px-12">
+                        Share & Control your Art{" "}
+                      </Button>
+                    </Link>
                     <Link href="https://studio.arttribute.io/" target="_blank">
                       <Button
                         variant="outline"
