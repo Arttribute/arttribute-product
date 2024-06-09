@@ -31,7 +31,7 @@ export default function MainMenu({
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem>
-              <Link href="/" passHref>
+              <Link href="/licenses" passHref>
                 {" "}
                 Arttribute Licences
               </Link>
