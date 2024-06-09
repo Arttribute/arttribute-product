@@ -31,7 +31,7 @@ export default function MainMenu({
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem>
-              <Link href="/" passHref>
+              <Link href="/licenses" passHref>
                 {" "}
                 Arttribute Licences
               </Link>
@@ -56,7 +56,7 @@ export default function MainMenu({
             </MenubarItem> */}
           </MenubarContent>
         </MenubarMenu>
-        {/*<MenubarMenu>
+        <MenubarMenu>
           <MenubarTrigger className="text-sm ">Builders</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
@@ -78,8 +78,8 @@ export default function MainMenu({
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-          */}
-        <MenubarMenu>
+
+        {/*<MenubarMenu>
           <MenubarTrigger className="text-sm ">NFTs</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
@@ -89,7 +89,7 @@ export default function MainMenu({
               </Link>
             </MenubarItem>
           </MenubarContent>
-        </MenubarMenu>
+        </MenubarMenu>*/}
       </Menubar>
     </nav>
   );
