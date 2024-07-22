@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Arttribute",
@@ -175,6 +176,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
