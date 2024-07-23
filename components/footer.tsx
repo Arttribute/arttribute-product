@@ -13,7 +13,7 @@ export default function Footer() {
       title: "Product",
       items: [
         { href: "https://artifacts.arttribute.io/", text: "Artifacts" },
-        { href: "/play", text: "Games" },
+        { href: "/games", text: "Games" },
         { href: "https://studio.arttribute.io/", text: "Arttribute Studio" },
       ],
     },
@@ -55,7 +55,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className="border-t border-dashed p-16">
+    <div className="border-t p-16">
       <div className="grid grid-cols-12">
         <div className="col-span-12 lg:col-span-4">
           <Logo variant="coloured" text="Arttribute" />

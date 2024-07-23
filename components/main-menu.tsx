@@ -43,7 +43,11 @@ export default function MainMenu({
           <MenubarContent>
             <MenubarItem>
               {" "}
-              <Link href="/studio" passHref>
+              <Link
+                href="https://studio.arttribute.io/"
+                target="blank"
+                passHref
+              >
                 Studio
               </Link>
             </MenubarItem>
