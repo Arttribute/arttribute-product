@@ -28,8 +28,8 @@ export default function Footer() {
     {
       title: "Legal",
       items: [
-        { href: "https://docs.arttribute.io/", text: "Terms of Service" },
-        { href: "https://docs.arttribute.io/", text: "Privacy Policy" },
+        { href: "/", text: "Terms of Service" },
+        { href: "/", text: "Privacy Policy" },
         { href: "/licenses", text: "Arttribute Licenses" },
       ],
     },
@@ -70,7 +70,11 @@ export default function Footer() {
             <ul className="flex flex-col">
               {linkGroup.items.map((item, idx) => (
                 <li key={idx}>
-                  <Link className="text-sm text-gray-600" href={item.href}>
+                  <Link
+                    className="text-sm text-gray-600"
+                    href={item.href}
+                    target="_blank"
+                  >
                     {item.text}
                   </Link>
                 </li>
@@ -82,7 +86,12 @@ export default function Footer() {
         <div className="col-span-12 lg:col-span-2">
           <div className="flex">
             {socialLinks.map((social, index) => (
-              <Link key={index} className="text-gray-700" href={social.href}>
+              <Link
+                key={index}
+                className="text-gray-700"
+                href={social.href}
+                target="_blank"
+              >
                 {social.icon}
               </Link>
             ))}
