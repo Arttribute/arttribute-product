@@ -12,9 +12,9 @@ export default function Footer() {
     {
       title: "Product",
       items: [
-        { href: "https://artifacts.arttribute.io/", text: "Artifacts" },
         { href: "/games", text: "Games" },
         { href: "https://studio.arttribute.io/", text: "Arttribute Studio" },
+        { href: "https://artifacts.arttribute.io/", text: "Artifacts" },
       ],
     },
     {
