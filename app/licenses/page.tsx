@@ -8,9 +8,11 @@ import { ChevronRight } from "lucide-react";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Arttribute",
+  title: "Arttribute Licenses| Fair and Transparent AI Art Usage",
   description:
-    "Arttribute enables fair and transparent use of art in the realm of generative AI",
+    "Inspired by Creative Commons, Arttribute licenses are designed to provide a simple standard way to grant permissions for the use of your work in AI-driven creative processes - ensuring that you are always credited for your work. There are four types of licenses:",
+  keywords:
+    "Arttribute, AI art, generative AI, AI licenses, Arttribute licenses, AI art licenses,fair use of art, transparent art use",
 };
 
 const licenses = [

@@ -7,9 +7,10 @@ import { Button } from "@/components/ui/button";
 import { LayoutGrid, Sparkles, Puzzle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Arttribute",
-  description:
-    "Arttribute enables fair and transaparent use of art in the realm of genereative AI",
+  title: "Arttribute Games| AI enabled games",
+  description: "Explore the world of AI enabled games and create your own",
+  keywords:
+    "Arttribute, AI art, generative AI, AI enabled games, AI generated games, AI game, AI art games, fair use of art, transparent art use",
 };
 
 export default function HomePage() {
