@@ -25,13 +25,13 @@ export default function MainMenu({
           <MenubarContent>
             <MenubarItem>
               {" "}
-              <Link href="/" passHref>
+              <Link href="/" rel="noopener noreferrer" target="_blank">
                 About Arttribute
               </Link>
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem>
-              <Link href="/licenses" passHref>
+              <Link href="/licenses" rel="noopener noreferrer" target="_blank">
                 {" "}
                 Arttribute Licences
               </Link>
@@ -45,8 +45,8 @@ export default function MainMenu({
               {" "}
               <Link
                 href="https://studio.arttribute.io/"
+                rel="noopener noreferrer"
                 target="blank"
-                passHref
               >
                 Studio
               </Link>
@@ -76,7 +76,7 @@ export default function MainMenu({
             <MenubarSeparator />
             <MenubarItem>
               {" "}
-              <Link href="/" passHref>
+              <Link href="/" rel="noopener noreferrer">
                 Build with Arttribute
               </Link>
             </MenubarItem>
@@ -88,7 +88,7 @@ export default function MainMenu({
           <MenubarContent>
             <MenubarItem>
               {" "}
-              <Link href="/games" passHref target="_blank">
+              <Link href="/games" rel="noopener noreferrer" target="_blank">
                 Play
               </Link>
             </MenubarItem>
