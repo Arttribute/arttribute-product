@@ -83,17 +83,17 @@ export default function MainMenu({
           </MenubarContent>
         </MenubarMenu>
 
-        {/*<MenubarMenu>
-          <MenubarTrigger className="text-sm ">NFTs</MenubarTrigger>
+        <MenubarMenu>
+          <MenubarTrigger className="text-sm ">Games</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>
               {" "}
-              <Link href="/" passHref>
-                Marketplace Coming soon..
+              <Link href="/games" passHref target="_blank">
+                Play
               </Link>
             </MenubarItem>
           </MenubarContent>
-        </MenubarMenu>*/}
+        </MenubarMenu>
       </Menubar>
     </nav>
   );
