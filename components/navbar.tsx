@@ -14,7 +14,7 @@ export default function Navbar() {
 
         <div className="ml-auto flex items-center space-x-4">
           <div className="hidden lg:flex">
-            <Link href="/private-beta" passHref>
+            <Link href="https://studio.arttribute.io" target="_blank" passHref>
               <Button>Get Started</Button>
             </Link>
           </div>
