@@ -1,29 +1,69 @@
-import type { Metadata } from "next";
-import { Chakra_Petch } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SITE } from "@/lib/site";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
 
-const chakra_petch = Chakra_Petch({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
+const spaceGrotesk = localFont({
+  src: "../fonts/SpaceGrotesk-variable.ttf",
+  weight: "300 700",
   display: "swap",
-  fallback: ["Helvetica", "Arial", "sans-serif"],
+  variable: "--font-space-grotesk",
+});
+
+const geistMono = localFont({
+  src: "../fonts/GeistMono-variable.ttf",
+  weight: "100 900",
+  display: "swap",
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Arttribute",
-  description:
-    "Arttribute enables fair and transparent use of art in the realm of genereative AI",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: `${SITE.name}: ${SITE.tagline}`,
+    template: `%s · ${SITE.name}`,
+  },
+  description: SITE.description,
+  applicationName: SITE.name,
+  keywords: [
+    "private AI",
+    "local AI",
+    "sovereign AI",
+    "AI literacy",
+    "responsible AI",
+    "AI provenance",
+    "Agent Commons",
+    "CommonLab",
+    "ProvenanceKit",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: SITE.name,
+    url: SITE.url,
+    title: `${SITE.name}: ${SITE.tagline}`,
+    description: SITE.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@arttribute_io",
+    title: `${SITE.name}: ${SITE.tagline}`,
+    description: SITE.description,
+  },
+  alternates: {
+    types: { "application/rss+xml": `${SITE.url}/blog/rss.xml` },
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: "#fcfcfb",
+  colorScheme: "light",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={chakra_petch.className}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${spaceGrotesk.variable} ${geistMono.variable}`}>
+      <body className="min-h-dvh bg-page font-sans text-foreground antialiased">
         {children}
         <Analytics />
       </body>

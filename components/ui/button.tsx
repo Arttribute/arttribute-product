@@ -1,56 +1,170 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import Link from "next/link";
+import { forwardRef } from "react";
+import { LoaderCircle, type LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Tooltip } from "@/components/ui/tooltip";
 
-import { cn } from "@/lib/utils"
+type Variant = "primary" | "secondary" | "ghost" | "danger";
+type Size = "sm" | "md";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+const variants: Record<Variant, string> = {
+  primary: "bg-stone-900 text-white hover:bg-stone-800 disabled:bg-stone-900",
+  secondary:
+    "border border-border bg-white text-foreground shadow-card hover:bg-muted",
+  ghost: "text-muted-foreground hover:bg-muted hover:text-foreground",
+  danger:
+    "border border-border bg-white text-red-600 hover:border-red-200 hover:bg-red-50",
+};
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+const sizes: Record<Size, string> = {
+  sm: "h-8 gap-1.5 rounded-md px-2.5 text-xs",
+  md: "h-9 gap-2 rounded-lg px-3.5 text-sm",
+};
+
+export function buttonClass({
+  variant = "secondary",
+  size = "md",
+  className,
+}: {
+  variant?: Variant;
+  size?: Size;
+  className?: string;
+} = {}) {
+  return cn(
+    "inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+    variants[variant],
+    sizes[size],
+    className,
+  );
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: Variant;
+  size?: Size;
+  icon?: LucideIcon;
+  loading?: boolean;
+};
 
-export { Button, buttonVariants }
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    { variant, size, icon: Icon, loading, className, children, type = "button", disabled, ...props },
+    ref,
+  ) {
+    return (
+      <button
+        ref={ref}
+        type={type}
+        disabled={disabled || loading}
+        className={buttonClass({ variant, size, className })}
+        {...props}
+      >
+        {loading ? (
+          <LoaderCircle className="h-4 w-4 animate-spin" />
+        ) : Icon ? (
+          <Icon className={size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4"} strokeWidth={1.75} />
+        ) : null}
+        {children}
+      </button>
+    );
+  },
+);
+
+export function ButtonLink({
+  href,
+  variant,
+  size,
+  icon: Icon,
+  className,
+  children,
+  external,
+}: {
+  href: string;
+  variant?: Variant;
+  size?: Size;
+  icon?: LucideIcon;
+  className?: string;
+  children: React.ReactNode;
+  external?: boolean;
+}) {
+  const content = (
+    <>
+      {Icon ? (
+        <Icon className={size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4"} strokeWidth={1.75} />
+      ) : null}
+      {children}
+    </>
+  );
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={buttonClass({ variant, size, className })}
+      >
+        {content}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={buttonClass({ variant, size, className })}>
+      {content}
+    </Link>
+  );
+}
+
+/**
+ * Square icon-only button. The label is shown in a tooltip and read by
+ * screen readers, so every icon action stays discoverable without text.
+ */
+export function IconButton({
+  label,
+  icon: Icon,
+  onClick,
+  href,
+  variant = "ghost",
+  size = "md",
+  className,
+  disabled,
+  active,
+  tooltipSide = "bottom",
+}: {
+  label: string;
+  icon: LucideIcon;
+  onClick?: () => void;
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  className?: string;
+  disabled?: boolean;
+  active?: boolean;
+  tooltipSide?: "top" | "bottom" | "left" | "right";
+}) {
+  const classes = cn(
+    buttonClass({ variant, size }),
+    size === "sm" ? "w-8 px-0" : "w-9 px-0",
+    variant === "secondary" && "rounded-full",
+    active && "bg-accent text-foreground",
+    className,
+  );
+  const icon = <Icon className={size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4"} strokeWidth={1.75} />;
+  return (
+    <Tooltip label={label} side={tooltipSide}>
+      {href ? (
+        <Link href={href} aria-label={label} className={classes}>
+          {icon}
+        </Link>
+      ) : (
+        <button
+          type="button"
+          aria-label={label}
+          onClick={onClick}
+          disabled={disabled}
+          className={classes}
+        >
+          {icon}
+        </button>
+      )}
+    </Tooltip>
+  );
+}
