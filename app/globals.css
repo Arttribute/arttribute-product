@@ -2,20 +2,20 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --font-sans: var(--font-space-grotesk), Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-inter), Helvetica, Arial, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  /* Shared Agent Commons surface tokens: a warm stone scale with the page
-     canvas between stone-50 and the white used on cards. */
-  --color-page: #fcfcfb;
-  --color-foreground: #1c1917;
-  --color-muted: #f5f5f4;
-  --color-muted-foreground: #78716c;
-  --color-accent: #f1f0ee;
-  --color-border: #e7e5e4;
+  --font-display: var(--font-newsreader), Georgia, serif;
 
-  /* Arttribute accents come from the cube mark. The pastel washes sit
-     behind one word of a heading; the deep tones are for small marks only. */
+  /* Arttribute: paper, ink, rose and indigo. */
+  --color-page: #faf9f6;
+  --color-foreground: #172438;
+  --color-muted: #f1f0ec;
+  --color-muted-foreground: #666b73;
+  --color-accent: #f1f0ee;
+  --color-border: #dedfdf;
+
+  /* Original cube colors, retained as restrained brand accents. */
   --color-highlight: #fbcfe8;
   --color-highlight-border: #f9a8d4;
   --color-highlight-indigo: #c7d2fe;
@@ -25,10 +25,14 @@
   --color-brand-indigo: #1a237e;
 
   /* Soft elevation scale: composer > floating > card. */
-  --shadow-card: 0 2px 8px -2px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
-  --shadow-floating: 0 8px 24px -8px rgba(28, 25, 23, 0.12), 0 2px 6px -2px rgba(28, 25, 23, 0.05);
-  --shadow-composer: 0 12px 32px -12px rgba(28, 25, 23, 0.14), 0 4px 12px -4px rgba(28, 25, 23, 0.08),
-    0 1px 3px rgba(28, 25, 23, 0.05);
+  --shadow-card:
+    0 2px 8px -2px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
+  --shadow-floating:
+    0 8px 24px -8px rgba(28, 25, 23, 0.12),
+    0 2px 6px -2px rgba(28, 25, 23, 0.05);
+  --shadow-composer:
+    0 12px 32px -12px rgba(28, 25, 23, 0.14),
+    0 4px 12px -4px rgba(28, 25, 23, 0.08), 0 1px 3px rgba(28, 25, 23, 0.05);
 
   --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-caret: caret 1.1s step-end infinite;
@@ -94,23 +98,6 @@
 }
 
 @layer utilities {
-  /* One highlighted phrase per heading, in the Agent Commons manner. */
-  .hl {
-    border-radius: 0.375rem;
-    padding: 0 0.18em;
-    color: var(--color-foreground);
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
-  .hl-pink {
-    background: var(--color-highlight);
-    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-highlight-border) 70%, transparent);
-  }
-  .hl-indigo {
-    background: var(--color-highlight-indigo);
-    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-highlight-indigo-border) 70%, transparent);
-  }
-
   /* Hairline in the cube's colors, for thin accents only. */
   .brand-rule {
     background-image: linear-gradient(90deg, #f74581, #813380 55%, #1a237e);
@@ -133,12 +120,15 @@
   }
 
   .dot-grid {
-    background-image: radial-gradient(rgb(28 25 23 / 0.07) 1px, transparent 1px);
+    background-image: radial-gradient(
+      rgb(28 25 23 / 0.07) 1px,
+      transparent 1px
+    );
     background-size: 18px 18px;
   }
 }
 
-/* Shared UI kit helpers (same as CommonLab). */
+/* Form controls for the publishing console. */
 .ui-control {
   display: block;
   width: 100%;
@@ -270,5 +260,405 @@
   }
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* The public identity uses an editorial rhythm and an open, geometric motif. */
+.brand-container {
+  width: min(100% - 96px, 1280px);
+  margin-inline: auto;
+}
+.brand-section {
+  padding-block: 100px;
+}
+.brand-label {
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.brand-title {
+  font-size: clamp(36px, 4.3vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+  text-wrap: balance;
+}
+.brand-serif {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+.brand-copy {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #5d6470;
+  text-wrap: pretty;
+}
+.brand-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 22px;
+  background: #172438;
+  color: white;
+  border: 1px solid #172438;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    background 180ms,
+    transform 180ms;
+}
+.brand-button:hover {
+  background: #2a3a55;
+  transform: translateY(-2px);
+}
+.brand-button-light {
+  background: #faf9f6;
+  border-color: #faf9f6;
+  color: #172438;
+}
+.brand-button-light:hover {
+  background: #f0dde5;
+}
+.brand-button-outline {
+  border-color: #ccd0d4;
+  background: transparent;
+  color: #172438;
+}
+.brand-button-outline:hover {
+  background: #f0efec;
+}
+.brand-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  padding-block: 6px;
+}
+.brand-text-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 180ms;
+}
+.brand-text-link:hover svg {
+  transform: translate(3px, -3px);
+}
+.brand-rule-line {
+  border-top: 1px solid #dedfdf;
+}
+.brand-hero {
+  padding-block: 96px 72px;
+}
+.brand-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.brand-hero h1 {
+  font-size: clamp(54px, 6.5vw, 94px);
+  line-height: 1.02;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+}
+.brand-hero-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #efedf0;
+  border-radius: 50% 50% 4px 4px;
+  overflow: hidden;
+}
+.brand-art {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.brand-hero-art svg {
+  transform: scale(1.07);
+}
+.brand-product-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-block: 30px;
+}
+.brand-product-strip a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-inline: 32px;
+  border-right: 1px solid #dedfdf;
+}
+.brand-product-strip a:first-child {
+  padding-left: 0;
+}
+.brand-product-strip a:last-child {
+  padding-right: 0;
+  border: 0;
+}
+.brand-product-strip a svg:last-child {
+  margin-left: auto;
+  width: 16px;
+  color: #666b73;
+}
+.brand-product-strip a:hover {
+  color: #813380;
+}
+.brand-work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.brand-dark {
+  background: #172438;
+  color: #faf9f6;
+}
+.brand-dark .brand-copy {
+  color: #c4c9d2;
+}
+.brand-dark .brand-label {
+  color: #d4b7c8;
+}
+.brand-private {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 64px;
+  border-radius: 6px;
+}
+.brand-feature-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #ffffff20;
+  padding-block: 16px;
+  font-size: 14px;
+}
+.brand-feature-line svg {
+  width: 18px;
+  height: 18px;
+  color: #e8bcd1;
+}
+.brand-two-up {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+.brand-product-card {
+  padding: 44px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.brand-product-card h3 {
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+.brand-product-card .brand-copy {
+  max-width: 420px;
+}
+.brand-card-art {
+  width: 100%;
+  height: 200px;
+  margin-block: 24px;
+}
+.brand-approach {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 120px;
+}
+.brand-principle {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 24px;
+  padding-block: 24px;
+  border-top: 1px solid #dedfdf;
+}
+.brand-principle h3 {
+  font-size: 19px;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+.brand-principle p {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #5d6470;
+}
+.brand-cta {
+  padding-block: 80px;
+  background: #eeeaf0;
+}
+.brand-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.brand-footer {
+  padding-block: 64px 24px;
+  background: #faf9f6;
+}
+.brand-footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr repeat(3, 1fr);
+  gap: 48px;
+}
+.brand-footer a:hover {
+  color: #813380;
+}
+.journal-card {
+  flex-direction: column;
+  height: 100%;
+}
+.journal-card h3 {
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+.journal-card:hover h3 {
+  color: #813380;
+}
+.journal-card:hover .journal-cover svg {
+  transform: scale(1.04);
+}
+.journal-cover svg {
+  transition: transform 400ms;
+}
+.journal-lead {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: #f0eeeb;
+  padding: 24px;
+  border-radius: 4px;
+}
+.journal-lead h3 {
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.15;
+}
+.article-title {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+.prose-arttribute :where(h2, h3) {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 400;
+}
+@media (min-width: 1600px) {
+  .brand-hero {
+    padding-block: 112px 80px;
+  }
+}
+@media (max-width: 1000px) {
+  .brand-container {
+    width: min(100% - 48px, 1280px);
+  }
+  .brand-hero {
+    padding-block: 64px;
+  }
+  .brand-private {
+    gap: 40px;
+    padding: 40px;
+  }
+  .brand-approach {
+    gap: 60px;
+  }
+  .brand-work-grid {
+    gap: 40px;
+  }
+  .brand-product-strip a {
+    padding-inline: 20px;
+  }
+  .brand-footer-grid {
+    gap: 24px;
+  }
+}
+@media (max-width: 700px) {
+  .brand-container {
+    width: calc(100% - 40px);
+  }
+  .brand-section {
+    padding-block: 64px;
+  }
+  .brand-hero {
+    padding-block: 48px 36px;
+  }
+  .brand-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .brand-hero h1 {
+    font-size: clamp(48px, 10vw, 70px);
+  }
+  .brand-hero-art {
+    max-height: 390px;
+    max-width: 440px;
+    margin-inline: auto;
+  }
+  .brand-product-strip {
+    grid-template-columns: 1fr;
+    padding-block: 8px;
+  }
+  .brand-product-strip a {
+    padding: 20px 0;
+    border-right: 0;
+    border-bottom: 1px solid #dedfdf;
+  }
+  .brand-work-grid,
+  .brand-private,
+  .brand-two-up,
+  .brand-approach {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .brand-private {
+    padding: 32px 24px;
+  }
+  .brand-product-card {
+    padding: 32px 24px;
+  }
+  .brand-two-up {
+    gap: 20px;
+  }
+  .brand-card-art {
+    height: 170px;
+  }
+  .brand-cta {
+    padding-block: 56px;
+  }
+  .brand-cta-inner {
+    flex-direction: column;
+    align-items: start;
+    gap: 28px;
+  }
+  .brand-footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 16px;
+  }
+  .brand-footer-grid > :first-child {
+    grid-column: 1/-1;
+  }
+  .journal-lead {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px;
   }
 }

@@ -2,121 +2,121 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { NAV, PRIMARY_CTA } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
+  const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (open) dialog.current?.showModal();
+    else dialog.current?.close();
+    if (open) document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
-
-  const isActive = (href: string) => !href.includes("#") && pathname.startsWith(href);
-
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 900px)");
+    const onChange = () => {
+      if (media.matches) setOpen(false);
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b transition-colors duration-300",
-        scrolled || open ? "border-border/80 bg-page/85 backdrop-blur-xl" : "border-transparent bg-page/0",
-      )}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-border bg-page/95 backdrop-blur-md">
+      <div className="brand-container flex h-20 items-center justify-between gap-6">
         <Logo />
-
-        <nav aria-label="Main" className="hidden items-center gap-0.5 md:flex">
+        <nav
+          aria-label="Main"
+          className="hidden items-center gap-8 min-[900px]:flex"
+        >
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm text-stone-600 transition-colors hover:bg-muted hover:text-stone-950",
-                isActive(item.href) && "text-stone-950",
-              )}
+              aria-current={
+                !item.href.includes("#") && pathname.startsWith(item.href)
+                  ? "page"
+                  : undefined
+              }
+              className="text-[13px] text-[#5d6470] transition-colors hover:text-[#813380] aria-[current=page]:text-[#172438]"
             >
               {item.label}
             </Link>
           ))}
         </nav>
-
-        <div className="flex items-center gap-2">
-          <a
-            href={PRIMARY_CTA.href}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden h-9 items-center gap-1.5 rounded-lg bg-stone-900 px-3.5 text-sm font-medium text-white transition-colors hover:bg-stone-800 sm:inline-flex"
-          >
-            {PRIMARY_CTA.label}
-            <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-stone-700 transition-colors hover:bg-muted md:hidden"
-          >
-            {open ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
-          </button>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            key="mobile-nav"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 top-16 h-[calc(100dvh-4rem)] border-t border-border bg-page px-4 pb-8 pt-4 md:hidden"
-          >
-            <nav aria-label="Mobile" className="flex flex-col">
-              {NAV.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -6 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.03 * index, duration: 0.2 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-border py-4 text-lg tracking-tight text-stone-900"
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block">
             <a
               href={PRIMARY_CTA.href}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 flex h-11 items-center justify-center gap-1.5 rounded-lg bg-stone-900 text-sm font-medium text-white"
+              className="brand-button"
             >
               {PRIMARY_CTA.label}
-              <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+              <ArrowUpRight size={14} />
             </a>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+          </div>
+          <button
+            onClick={() => setOpen(true)}
+            type="button"
+            aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="flex h-11 w-11 items-center justify-center min-[900px]:hidden"
+          >
+            <Menu size={22} />
+          </button>
+        </div>
+      </div>
+      <dialog
+        ref={dialog}
+        id="mobile-menu"
+        onCancel={() => setOpen(false)}
+        onClose={() => setOpen(false)}
+        aria-label="Navigation menu"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none bg-page p-0 text-foreground backdrop:bg-foreground/30"
+      >
+        <div className="brand-container">
+          <div className="flex h-20 items-center justify-between">
+            <Logo />
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="flex h-11 w-11 items-center justify-center"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          <nav aria-label="Mobile" className="mt-8 flex flex-col">
+            {NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-border py-5 text-2xl tracking-tight"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <a
+            href={PRIMARY_CTA.href}
+            target="_blank"
+            rel="noreferrer"
+            className="brand-button mt-8"
+          >
+            {PRIMARY_CTA.label}
+            <ArrowUpRight size={16} />
+          </a>
+        </div>
+      </dialog>
     </header>
   );
 }

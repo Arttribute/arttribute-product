@@ -6,9 +6,9 @@
 export const SITE = {
   name: "Arttribute",
   url: (process.env.SITE_URL ?? "https://www.arttribute.io").replace(/\/$/, ""),
-  tagline: "AI that keeps you in control",
+  tagline: "Powerful AI. On your terms.",
   description:
-    "Arttribute builds technology for private, transparent and responsible AI: local AI with Agent Commons, AI literacy with CommonLab, and provenance with ProvenanceKit.",
+    "Technology and education for a more human future with AI. Discover private AI with Agent Commons, practical learning with CommonLab, and transparent creation with ProvenanceKit.",
   email: "hello@arttribute.io",
 };
 
@@ -80,11 +80,10 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const NAV = [
-  { label: "Private AI", href: "/#private-ai" },
-  { label: "AI literacy", href: "/#ai-literacy" },
-  { label: "Provenance", href: "/#provenance" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
+  { label: "Our work", href: "/#work" },
+  { label: "Our approach", href: "/#approach" },
+  { label: "Journal", href: "/blog" },
+  { label: "Company", href: "/about" },
 ];
 
 export const FOOTER_GROUPS: Array<{
@@ -104,9 +103,17 @@ export const FOOTER_GROUPS: Array<{
   {
     title: "Resources",
     links: [
-      { label: "Blog", href: "/blog" },
-      { label: "Agent Commons docs", href: LINKS.agentCommonsDocs, external: true },
-      { label: "ProvenanceKit docs", href: LINKS.provenanceKitDocs, external: true },
+      { label: "Journal", href: "/blog" },
+      {
+        label: "Agent Commons docs",
+        href: LINKS.agentCommonsDocs,
+        external: true,
+      },
+      {
+        label: "ProvenanceKit docs",
+        href: LINKS.provenanceKitDocs,
+        external: true,
+      },
       { label: "GitHub", href: LINKS.github, external: true },
     ],
   },
