@@ -16,7 +16,9 @@ type Filter = "all" | (typeof TOPICS)[number]["value"];
  */
 export function BlogIndex({ posts }: { posts: PostSummary[] }) {
   const param = useSearchParams().get("topic");
-  const topic: Filter = TOPICS.some((t) => t.value === param) ? (param as Filter) : "all";
+  const topic: Filter = TOPICS.some((t) => t.value === param)
+    ? (param as Filter)
+    : "all";
 
   const choose = (value: Filter) => {
     const url = new URL(window.location.href);
@@ -27,14 +29,21 @@ export function BlogIndex({ posts }: { posts: PostSummary[] }) {
 
   const counts = useMemo(() => {
     const map = new Map<string, number>();
-    posts.forEach((post) => map.set(post.topic, (map.get(post.topic) ?? 0) + 1));
+    posts.forEach((post) =>
+      map.set(post.topic, (map.get(post.topic) ?? 0) + 1),
+    );
     return map;
   }, [posts]);
 
-  const visible = topic === "all" ? posts : posts.filter((post) => post.topic === topic);
+  const visible =
+    topic === "all" ? posts : posts.filter((post) => post.topic === topic);
   const filters = [
     { value: "all" as Filter, label: "All", count: posts.length },
-    ...TOPICS.filter((t) => counts.get(t.value)).map((t) => ({ value: t.value as Filter, label: t.label, count: counts.get(t.value) ?? 0 })),
+    ...TOPICS.filter((t) => counts.get(t.value)).map((t) => ({
+      value: t.value as Filter,
+      label: t.label,
+      count: counts.get(t.value) ?? 0,
+    })),
   ];
 
   return (
@@ -47,14 +56,19 @@ export function BlogIndex({ posts }: { posts: PostSummary[] }) {
             aria-selected={topic === filter.value}
             onClick={() => choose(filter.value)}
             className={cn(
-              "inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-sm transition-colors",
+              "inline-flex h-8 items-center gap-1.5 rounded-sm border px-3 text-sm transition-colors",
               topic === filter.value
-                ? "border-stone-900 bg-stone-900 text-white"
+                ? "border-foreground bg-foreground text-white"
                 : "border-border bg-white text-stone-600 hover:border-stone-300 hover:text-stone-950",
             )}
           >
             {filter.label}
-            <span className={cn("text-xs", topic === filter.value ? "text-stone-300" : "text-stone-400")}>
+            <span
+              className={cn(
+                "text-xs",
+                topic === filter.value ? "text-stone-300" : "text-stone-400",
+              )}
+            >
               {filter.count}
             </span>
           </button>
@@ -76,7 +90,11 @@ export function BlogIndex({ posts }: { posts: PostSummary[] }) {
             </motion.div>
           ))}
         </AnimatePresence>
-        {visible.length === 0 ? <p className="py-10 text-sm text-stone-500">No posts on this topic yet.</p> : null}
+        {visible.length === 0 ? (
+          <p className="py-10 text-sm text-stone-500">
+            No posts on this topic yet.
+          </p>
+        ) : null}
       </div>
     </div>
   );

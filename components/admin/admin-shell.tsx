@@ -8,8 +8,18 @@ import { CubeMark } from "@/components/site/logo";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/admin", label: "Posts", icon: FileText, match: (p: string) => p === "/admin" || p.startsWith("/admin/posts") },
-  { href: "/admin/featured", label: "Featured", icon: Star, match: (p: string) => p.startsWith("/admin/featured") },
+  {
+    href: "/admin",
+    label: "Posts",
+    icon: FileText,
+    match: (p: string) => p === "/admin" || p.startsWith("/admin/posts"),
+  },
+  {
+    href: "/admin/featured",
+    label: "Featured",
+    icon: Star,
+    match: (p: string) => p.startsWith("/admin/featured"),
+  },
 ];
 
 /**
@@ -29,10 +39,15 @@ export function AdminShell({
 
   const sidebar = (
     <div className="flex h-full flex-col">
-      <Link href="/admin" className="flex items-center gap-2 px-3 py-4 text-[15px] font-medium tracking-tight text-stone-950">
+      <Link
+        href="/admin"
+        className="flex items-center gap-2 px-3 py-4 text-[15px] font-medium tracking-tight text-stone-950"
+      >
         <CubeMark className="h-5" />
         Arttribute
-        <span className="rounded-md bg-muted px-1.5 py-0.5 text-[11px] font-medium text-stone-500">Admin</span>
+        <span className="rounded-md bg-muted px-1.5 py-0.5 text-[11px] font-medium text-stone-500">
+          Admin
+        </span>
       </Link>
       <nav aria-label="Admin" className="mt-2 flex flex-col gap-0.5 px-2">
         {NAV.map(({ href, label, icon: Icon, match }) => (
@@ -43,7 +58,9 @@ export function AdminShell({
             aria-current={match(pathname) ? "page" : undefined}
             className={cn(
               "flex h-9 items-center gap-2.5 rounded-lg px-2.5 text-sm transition-colors",
-              match(pathname) ? "bg-accent font-medium text-stone-950" : "text-stone-600 hover:bg-muted hover:text-stone-950",
+              match(pathname)
+                ? "bg-[#eeecf4] font-medium text-[#25326c]"
+                : "text-stone-600 hover:bg-muted hover:text-stone-950",
             )}
           >
             <Icon className="h-4 w-4" strokeWidth={1.75} />
@@ -65,15 +82,23 @@ export function AdminShell({
         <div className="flex items-center gap-2.5 rounded-lg px-2 py-2">
           {user.picture ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={user.picture} alt="" className="h-7 w-7 rounded-full object-cover" />
+            <img
+              src={user.picture}
+              alt=""
+              className="h-7 w-7 rounded-full object-cover"
+            />
           ) : (
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-pink-100 text-xs font-medium text-pink-900">
               {user.name.charAt(0).toUpperCase()}
             </span>
           )}
           <span className="min-w-0 flex-1">
-            <span className="block truncate text-sm font-medium text-stone-900">{user.name}</span>
-            <span className="block truncate text-xs text-stone-500">{user.email}</span>
+            <span className="block truncate text-sm font-medium text-stone-900">
+              {user.name}
+            </span>
+            <span className="block truncate text-xs text-stone-500">
+              {user.email}
+            </span>
           </span>
           <form action="/api/auth/logout" method="post">
             <button
@@ -92,11 +117,17 @@ export function AdminShell({
 
   return (
     <div className="flex h-dvh overflow-hidden bg-page">
-      <aside className="hidden w-60 shrink-0 border-r border-border bg-white lg:block">{sidebar}</aside>
+      <aside className="hidden w-60 shrink-0 border-r border-border bg-white lg:block">
+        {sidebar}
+      </aside>
 
       {open ? (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="ui-fade-in absolute inset-0 bg-stone-950/20" onClick={() => setOpen(false)} aria-hidden />
+          <div
+            className="ui-fade-in absolute inset-0 bg-stone-950/20"
+            onClick={() => setOpen(false)}
+            aria-hidden
+          />
           <aside className="ui-slide-in relative h-full w-64 border-r border-border bg-white shadow-floating">
             <button
               type="button"
@@ -130,7 +161,9 @@ export function AdminShell({
           <div className="min-h-0 flex-1">{children}</div>
         ) : (
           <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-            <div className="mx-auto max-w-4xl px-4 py-8 sm:px-8">{children}</div>
+            <div className="mx-auto max-w-4xl px-4 py-8 sm:px-8">
+              {children}
+            </div>
           </main>
         )}
       </div>

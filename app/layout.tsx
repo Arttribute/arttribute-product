@@ -4,11 +4,28 @@ import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const spaceGrotesk = localFont({
-  src: "../fonts/SpaceGrotesk-variable.ttf",
-  weight: "300 700",
+const inter = localFont({
+  src: "../fonts/Inter-variable.woff2",
+  weight: "100 900",
   display: "swap",
-  variable: "--font-space-grotesk",
+  variable: "--font-inter",
+});
+
+const newsreader = localFont({
+  src: [
+    {
+      path: "../fonts/Newsreader-variable.woff2",
+      weight: "200 800",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Newsreader-Italic-variable.woff2",
+      weight: "200 800",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-newsreader",
 });
 
 const geistMono = localFont({
@@ -56,13 +73,21 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fcfcfb",
+  themeColor: "#faf9f6",
   colorScheme: "light",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${spaceGrotesk.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${newsreader.variable} ${geistMono.variable}`}
+    >
       <body className="min-h-dvh bg-page font-sans text-foreground antialiased">
         {children}
         <Analytics />

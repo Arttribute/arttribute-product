@@ -15,5 +15,5 @@ The arttribute.io website. Read `README.md` first.
 - Copy and links that repeat across pages live in `lib/site.ts`. Change them there.
 - Public pages are in `app/(site)/`, the admin console in `app/admin/`. Admin mutations are server actions in `app/admin/actions.ts`; each one calls `requireAdmin()` and revalidates the site.
 - Data access is `lib/posts.ts` and `lib/media.ts` on MongoDB (`lib/db.ts`). Public reads never throw; they log and return empty.
-- UI follows the Agent Commons UI guidelines: the `components/ui` kit, stone neutrals, Space Grotesk, one `Hl` highlight per heading. Pink and indigo are the only accents.
+- Arttribute has its own identity. Public pages use the `brand-*` styles in `app/globals.css`: Inter, Newsreader editorial accents, paper and ink-blue with restrained rose and indigo. Keep the original cube mark. Do not add highlighted heading pills, simulated product interfaces or copy the Agent Commons marketing design. The `components/ui` kit remains for the publishing console.
 - Write in plain, short sentences. Avoid em dashes.

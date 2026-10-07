@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   },
   // Share images read this font from disk at request time.
   outputFileTracingIncludes: {
-    "/**": ["./fonts/SpaceGrotesk-Medium.ttf"],
+    "/**": ["./fonts/Inter-Medium.ttf"],
   },
   async redirects() {
     return [
@@ -15,7 +15,11 @@ const nextConfig: NextConfig = {
       { source: "/licenses", destination: "/", permanent: true },
       { source: "/studio", destination: "/", permanent: true },
       { source: "/private-beta", destination: "/", permanent: true },
-      { source: "/games", destination: "https://arcade.agentcommons.io", permanent: false },
+      {
+        source: "/games",
+        destination: "https://arcade.agentcommons.io",
+        permanent: false,
+      },
       { source: "/writing", destination: "/blog", permanent: true },
     ];
   },
@@ -27,7 +31,10 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
         ],
       },
       {

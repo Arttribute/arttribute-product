@@ -1,54 +1,73 @@
-import { Fingerprint, LockKeyhole, Unlock, UserCheck } from "lucide-react";
-import { Reveal } from "@/components/site/reveal";
-import { Hl, Section, SectionHeading } from "@/components/site/section";
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  Fingerprint,
+  LockKeyhole,
+  Unlock,
+  UserCheck,
+} from "lucide-react";
 
 export const PRINCIPLES = [
   {
     icon: LockKeyhole,
-    title: "Your data stays yours.",
-    body: "Local first. Sending work to the cloud is a decision you make, not a default.",
+    title: "Control over your data",
+    body: "Choose where AI runs and what information you share. Privacy should be a practical choice you can exercise.",
   },
   {
     icon: Unlock,
-    title: "No lock-in.",
-    body: "Open-weight and frontier models side by side, public code, and work you can take with you.",
+    title: "Freedom to choose",
+    body: "Work with different models and open tools. Your processes should reflect your needs, with room to change.",
   },
   {
     icon: UserCheck,
-    title: "People stay in charge.",
-    body: "Approvals, verification and human oversight are part of the workflow, not an afterthought.",
+    title: "People at the centre",
+    body: "Skills, verification and human oversight make AI more useful. Good judgement belongs in the workflow.",
   },
   {
     icon: Fingerprint,
-    title: "Credit follows contribution.",
-    body: "Record who and what made the work, so rights, credit and rewards can follow.",
+    title: "Transparency in the work",
+    body: "Make contributions visible. Records of who did what help people understand, credit and assess AI-assisted work.",
   },
 ];
 
 export function Principles() {
   return (
-    <Section className="border-t border-border bg-white">
-      <Reveal>
-        <SectionHeading
-          eyebrow="What we stand for"
-          tone="plum"
-          title={
-            <>
-              Freedom tech for the <Hl tone="indigo">age of AI</Hl>.
-            </>
-          }
-          body="Sovereignty over your data, your models and your processes, with AI that is used fairly and responsibly. Four commitments shape everything we build."
-        />
-      </Reveal>
-      <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-        {PRINCIPLES.map(({ icon: Icon, title, body }, index) => (
-          <Reveal key={title} delay={0.06 * index} className="bg-white p-6">
-            <Icon className="h-5 w-5 text-stone-500" strokeWidth={1.75} />
-            <h3 className="mt-6 text-[17px] font-medium tracking-[-0.02em] text-stone-950">{title}</h3>
-            <p className="mt-2 text-sm leading-6 text-stone-600">{body}</p>
-          </Reveal>
-        ))}
+    <section
+      id="approach"
+      className="brand-section border-y border-border bg-white"
+    >
+      <div className="brand-container brand-approach">
+        <div>
+          <p className="brand-label text-[#813380]">Our approach</p>
+          <h2 className="brand-title mt-6">
+            Progress means
+            <br />
+            <span className="brand-serif italic">more agency.</span>
+          </h2>
+          <p className="brand-copy mt-6 max-w-md">
+            AI should expand what people can do while preserving their freedom
+            to decide. We bring that belief into the technology we build and the
+            way we teach.
+          </p>
+          <Link href="/about" className="brand-text-link mt-6">
+            Get to know Arttribute
+            <ArrowUpRight />
+          </Link>
+        </div>
+        <div>
+          {PRINCIPLES.map(({ title, body }, i) => (
+            <div className="brand-principle" key={title}>
+              <span className="pt-1 font-mono text-[11px] text-[#813380]">
+                0{i + 1}
+              </span>
+              <div>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
