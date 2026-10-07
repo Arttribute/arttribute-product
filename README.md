@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# arttribute.io
 
-## Getting Started
+The Arttribute website: who we are, what we build, and the blog.
 
-First, run the development server:
+Arttribute builds technology for private, transparent and responsible AI:
+
+- **Private AI** with [Agent Commons](https://www.agentcommons.io): local models on your own computer, with cloud continuity when you choose.
+- **AI literacy** with [CommonLab](https://commonlab.agentcommons.io): practical, responsible AI skills for leaders, teams, educators and students.
+- **Provenance** with [ProvenanceKit](https://www.provenancekit.com): open-source records of how human and AI work was made.
+
+## Stack
+
+Next.js 16 (App Router), React 19, Tailwind CSS 4, Motion, MongoDB. Deployed on Vercel from `main`.
+
+The look follows the Agent Commons design system: warm stone neutrals, Space Grotesk, one highlighted phrase per heading, and the shared `components/ui` kit from CommonLab. Arttribute's pink and indigo come from the cube mark.
+
+## Run it locally
 
 ```bash
+npm install
+cp .env.example .env.local   # then fill in the values
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The public pages work without a database. With no `MONGODB_URI` the blog sections are hidden.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | What it is |
+|---|---|
+| `MONGODB_URI` | MongoDB connection string. Posts and images live here. |
+| `MONGODB_DB` | Database name. Defaults to `arttribute`. |
+| `SITE_URL` | Public origin, for example `https://www.arttribute.io`. Used for links, feeds and the sign-in callback. |
+| `SESSION_SECRET` | At least 32 random characters. Seals the admin session cookie. |
+| `COMMONS_IDENTITY_ISSUER` | Commons Identity issuer. Defaults to `https://auth.agentcommons.io/api/auth`. |
+| `COMMONS_IDENTITY_CLIENT_ID` / `_SECRET` | The Arttribute OAuth client in Commons Identity. |
+| `ADMIN_EMAILS` | Comma-separated emails that may use the admin console. `ADMIN_SUBJECTS` takes Commons account ids instead. |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## The blog
 
-## Learn More
+Posts are stored in the `posts` collection and images in `media`. The first connection creates indexes and writes the three opening posts once. After that they are ordinary posts.
 
-To learn more about Next.js, take a look at the following resources:
+- `/blog` lists featured posts first, then every post with topic filters.
+- `/blog/<slug>` renders the post's Markdown. Raw HTML in Markdown is not rendered.
+- `/blog/rss.xml`, `/sitemap.xml` and per-post share images are generated.
+- Pages are static and revalidate every five minutes. Every admin change revalidates them at once.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## The admin console
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`/admin` is the console. People sign in with their Commons account through Commons Identity, the same account they use for Agent Commons and CommonLab. Only accounts listed in `ADMIN_EMAILS` or `ADMIN_SUBJECTS` get in. The site stores who signed in, in an encrypted cookie, and never keeps Commons tokens.
 
-## Deploy on Vercel
+In the console you can:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Write posts in Markdown with a toolbar and live preview. Paste or drop images to upload them.
+- Set the URL, topic, author, cover image and publish date. A future date schedules the post.
+- Publish, unpublish, feature and delete posts.
+- Order featured posts under **Featured**. The first three lead the home page and the blog.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Registering the sign-in client
+
+The site needs an OAuth client in Commons Identity with this redirect URI:
+
+```
+https://www.arttribute.io/api/auth/callback
+```
+
+`apps/commons-identity/scripts/bootstrap-arttribute-client.ts` in the agent-commons repo creates it. Run it with the identity database URL, then put the client id and secret in the Vercel environment.
+
+## Checks
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
